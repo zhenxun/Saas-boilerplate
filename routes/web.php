@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/token', function(){
+    $token = auth()->user()->generateConfirmationToken();
+
+    dd($token);
+});
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -30,4 +36,6 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
     Route::patch('password', 'Account\ChangePasswordController@update')->name('change.password.update');
 
 });
+
+
 
