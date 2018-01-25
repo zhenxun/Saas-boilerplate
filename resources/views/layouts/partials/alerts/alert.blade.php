@@ -1,6 +1,6 @@
 @if(session()->has('success'))
 
-    @component('layouts.partials.alerts.alert-component', ['category' => 'success'])
+    @component('layouts.partials.alerts.alert-component', ['category' => 'success', 'tag' => 'Success'])
 
         {{ session('success') }}
         
@@ -10,7 +10,7 @@
 
 @if(session()->has('error'))
 
-    @component('layouts.partials.alerts.alert-component', ['category' => 'danger'])
+    @component('layouts.partials.alerts.alert-component', ['category' => 'danger', 'tag' => 'Oops'])
 
         {{ session('error') }}
 
