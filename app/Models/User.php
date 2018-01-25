@@ -29,7 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function test(){
-        return '123';
+    public function hasActivated(){
+        return $this->activated;
     }
+
+    public function hasNotActivated(){
+        return !$this->hasActivated();
+    }
+
 }
