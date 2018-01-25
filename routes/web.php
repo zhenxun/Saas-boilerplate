@@ -33,10 +33,13 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
     Route::patch('password', 'Account\ChangePasswordController@update')->name('change.password.update');
 });
 
-Route::group(['prefix' => 'ativation', 'as' => 'activation.', 'middleware' => ['guest', 'confirmation_token.expired:/']], function(){
+Route::group(['prefix' => 'activation', 'as' => 'activation.', 'middleware' => ['guest']], function(){
 
-    Route::get('/{confirmation_token}', 'Auth\ActivationController@activate')->name('activate');
+    Route::get('/resend', 'Auth\ActivationResendController@index')->name('resend');
 
+    Route::post('/resend', 'Auth\ActivationResendController@store')->name('resend.store');
+
+    Route::get('/{confirmation_token}', 'Auth\ActivationController@activate')->name('activate');  
 });
 
 

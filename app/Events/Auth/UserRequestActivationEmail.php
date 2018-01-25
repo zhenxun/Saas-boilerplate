@@ -2,12 +2,11 @@
 
 namespace App\Events\Auth;
 
-
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use App\Models\User;
 
-class UserSignedUp
+class UserRequestActivationEmail
 {
     use Dispatchable, SerializesModels;
 
