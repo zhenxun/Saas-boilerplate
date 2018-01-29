@@ -4,6 +4,7 @@ namespace App\Http\Requests\Subscription;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\ValidStripeCoupon;
 
 class SubscriptionStoreRequest extends FormRequest
 {
@@ -32,6 +33,7 @@ class SubscriptionStoreRequest extends FormRequest
                  })
             ],
             'token' => 'required',
+            'coupon' => ['nullable', new ValidStripeCoupon()]
         ];
     }
 }
