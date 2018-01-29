@@ -20,17 +20,25 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.'], function(){
+Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.', 'namespace' => 'Account'], function(){
 
-    Route::get('/','Account\AccountController@index')->name('index');
+    Route::get('/','AccountController@index')->name('index');
 
-    Route::get('profile','Account\ProfileController@index')->name('profile.index');
+    Route::get('profile','ProfileController@index')->name('profile.index');
 
-    Route::patch('profile', 'Account\ProfileController@store')->name('profile.store');
+    Route::patch('profile', 'ProfileController@store')->name('profile.store');
 
-    Route::get('password','Account\ChangePasswordController@index')->name('change.password.index');
+    Route::get('password','ChangePasswordController@index')->name('change.password.index');
 
-    Route::patch('password', 'Account\ChangePasswordController@update')->name('change.password.update');
+    Route::patch('password', 'ChangePasswordController@update')->name('change.password.update');
+
+
+    Route::group(['prefix' => 'subscription', 'namespace' => 'Subscription','as' => 'subscription.'], function(){
+
+        Route::get('/cancel', 'SubscriptionCancelController@index')->name('cancel.index');
+    });
+
+
 });
 
 Route::group(['prefix' => 'activation', 'as' => 'activation.', 'middleware' => ['guest']], function(){
