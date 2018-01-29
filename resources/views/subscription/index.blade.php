@@ -78,9 +78,9 @@
 
         $('#pay').click(function (e) {
             handler.open({
-                name: 'Codecourse Ltd.',
-                description: 'Membership',
-                currency: 'gbp',
+                name: 'Saas Boilerplate Ltd.',
+                description: '加入會員',
+                currency: 'twd',
                 key: '{{ config('services.stripe.key') }}',
                 email: '{{ auth()->user()->email }}'
             })
