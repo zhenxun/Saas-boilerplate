@@ -50,5 +50,14 @@ Route::group(['prefix' => 'plans', 'as' => 'subscription.'], function(){
 
 });
 
+Route::group(['prefix' => 'subscription', 'as' => 'subscription.', 'middleware' => ['auth.register']], function(){
+
+    Route::get('/', 'Subscription\SubscriptionController@index')->name('index');
+
+    Route::post('/', 'Subscription\SubscriptionController@store')->name('store');
+
+});
+
+
 
 
